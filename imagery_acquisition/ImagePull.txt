@@ -1,0 +1,15 @@
+## run in command line to change file names
+find . -type f -name "response.png" -printf "/%P\n" | while read FILE ; do DIR=$(dirname "$FILE" );\
+cp ."$FILE" ."$DIR""$DIR".png;done   
+
+## run in command line to move images to a directory by themselves
+#!/bin/bash
+cd ~/imagery_downloads/non_mine_dir/
+for f in $(find . -type f -name "*.png")
+do 
+    cp $f ~/images/nonmine_imagery_092020
+done
+
+
+# renaming files to reflect their labels
+for file in *;do [ -f "$file" ] && mv -- "$file" "nonmine_$file"; done
